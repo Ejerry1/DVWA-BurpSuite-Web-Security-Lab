@@ -1,0 +1,109 @@
+DVWA + Burp Suite Web Security Lab
+
+Purpose
+
+Record the main commands and manual workflow used in the local
+DVWA and Burp Suite lab.
+
+Environment
+
+Application URL: http://127.0.0.1:42001
+Target: Locally hosted DVWA instance
+Testing module: SQL Injection
+Tool: Burp Suite Community Edition
+
+1. Start DVWA
+
+---
+
+Command used:
+
+sudo dvwa-start
+
+Then open the local DVWA URL in the browser.
+
+Note:
+The startup command depends on the lab environment. Do not run
+commands against systems outside the authorized lab.
+
+2. DVWA Login and Setup
+
+---
+
+1. Open the local DVWA URL.
+
+2. Log in to DVWA.
+
+3. Confirm that the dashboard is accessible.
+
+4. Open the SQL Injection module.
+
+5. Set the required security level through DVWA Security.
+
+6. Burp Suite Workflow
+
+---
+
+1. Open Burp Suite Community Edition.
+
+2. Open Burp's built-in browser.
+
+3. Browse to the local DVWA application.
+
+4. Use Proxy > HTTP history to inspect requests.
+
+5. Identify the relevant request and inspect its method and parameters.
+
+6. Right-click the request and select Send to Repeater.
+
+7. In Repeater, inspect the request before changing any input.
+
+8. Click Send to issue the request.
+
+9. Review the response status, headers, and body.
+
+10. Compare results with the original browser behavior.
+
+11. SQL Injection Test Inputs
+
+---
+
+Normal numeric inputs tested:
+
+1
+2
+3
+4
+5
+
+Unexpected inputs tested:
+
+abc
+1'
+
+These were manually entered through DVWA and/or Burp Repeater,
+depending on the security level and the request workflow.
+
+5. Evidence
+
+---
+
+Screenshots were saved in the evidence directory.
+
+Before sharing screenshots, review them for session cookies,
+PHPSESSID values, credentials, and other sensitive information.
+
+Do not publish session cookies or authentication tokens.
+
+6. Notes
+
+---
+
+- Burp Proxy and HTTP history help inspect browser-generated traffic.
+- Repeater allows controlled resending of requests.
+- GET and POST requests may carry input in different places.
+- HTTP 200 does not prove that an input was accepted or safe.
+- HTTP 500 does not independently prove SQL injection.
+- HTTP 302 indicates a redirect; inspect the destination and request
+  context before interpreting the result.
+- Only report findings that are supported by observed evidence.
